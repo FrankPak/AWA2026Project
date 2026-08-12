@@ -20,8 +20,9 @@ const fetchData = async (event) => {
             },
             body: JSON.stringify(formData)
         })
+
         if (!response.ok) {
-            document.getElementById("error").innerText = "Error when trying to login. Please try again."
+            throw new Error("Error fetching data")
         } else {
             const data = await response.json()
             
@@ -32,7 +33,7 @@ const fetchData = async (event) => {
             
         }
 
-    } catch (error) {
+    } catch(error) {
         console.error("Error:", error)
     }
     document.getElementById("loginForm").reset()

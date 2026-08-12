@@ -10,6 +10,7 @@ const fetchData = async (event) => {
         email: event.target.email.value,
         password: event.target.password.value,
     }
+    
     console.log(formData)
     
     try {

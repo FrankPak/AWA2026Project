@@ -6,29 +6,14 @@ const validate = async () => {
     return
     }
 
-    /* Currently useless feature, leftovers from weektasks
-    const response = await fetch("/api/private", {
-        method: "GET",
-        headers: {
-            "authorization": `Bearer ${token}`
-        }
-    })
-    const data = await response.json()
-
-    if (!response.ok) {
-       window.location.href = "/login.html"
-    }
-       */
-
-    fetchFiles()
+    fetchFile()
     
 }
 
-const fetchFiles = async () => {
-    document.getElementById("filelist").innerHTML = ""
+const fetchFile = async () => {
     const token = localStorage.getItem("token")
     try {
-        const response = await fetch("http://localhost:3000/api/files", {
+        const response = await fetch("http://localhost:3000/api/file/", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${token}`

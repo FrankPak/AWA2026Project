@@ -11,7 +11,6 @@ const userRouter: Router = Router()
 
 
 userRouter.post('/register', 
-    //usernameValidator("username"),
     emailValidator("email"),
     passValidator("password"),
     async (req: Request, res: Response) => {
@@ -36,7 +35,6 @@ userRouter.post('/register',
         const newUser = await User.create({
             email: req.body.email,
             password: hash,
-            //username: req.body.username,
             isAdmin: req.body.isAdmin ? req.body.isAdmin : false
         })
         
@@ -76,8 +74,7 @@ userRouter.post('/login',
             
             const jwtPayload: JwtPayload = {
                 _id: existingUser._id,
-                username: existingUser.username,
-                isAdmin: existingUser.isAdmin
+                email: existingUser.email,
             }
 
             const token: string = jwt.sign(jwtPayload, process.env.SECRET as string, { expiresIn: "2m"})

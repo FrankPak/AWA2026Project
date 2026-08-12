@@ -3,7 +3,6 @@ import mongoose, {Document, Schema} from "mongoose";
 interface IUser extends Document{
     email: string
     password: string
-    username: string
     isAdmin: boolean
 }
 
@@ -11,7 +10,6 @@ interface IUser extends Document{
 const UserSchema: Schema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    username: {type: String, required: false, unique: true},
     isAdmin: {type: Boolean, default: false},
 })
 
