@@ -10,10 +10,8 @@ import { usernameValidator, emailValidator, passValidator } from '../validators/
 const userRouter: Router = Router()
 
 
-
-
 userRouter.post('/register', 
-    usernameValidator("username"),
+    //usernameValidator("username"),
     emailValidator("email"),
     passValidator("password"),
     async (req: Request, res: Response) => {
@@ -38,7 +36,7 @@ userRouter.post('/register',
         const newUser = await User.create({
             email: req.body.email,
             password: hash,
-            username: req.body.username,
+            //username: req.body.username,
             isAdmin: req.body.isAdmin ? req.body.isAdmin : false
         })
         

@@ -3,6 +3,7 @@ import path  from "path"
 import router from "./src/routes/index"
 import userRouter from './src/routes/user'
 import topicRouter from './src/routes/topic'
+import fileRouter from './src/routes/file'
 import morgan from 'morgan'
 import mongoose, { Connection } from 'mongoose'
 import dotenv from 'dotenv'
@@ -31,7 +32,8 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(express.static(path.join(__dirname, "../public")))
 app.use("/", router)
-app.use("/api", topicRouter)
+//app.use("/api", topicRouter)
+app.use("/api", fileRouter)
 app.use("/api/user", userRouter)
 
 

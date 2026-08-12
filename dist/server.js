@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const index_1 = __importDefault(require("./src/routes/index"));
 const user_1 = __importDefault(require("./src/routes/user"));
-const topic_1 = __importDefault(require("./src/routes/topic"));
+const file_1 = __importDefault(require("./src/routes/file"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -23,7 +23,8 @@ app.use(express_1.default.urlencoded({ extended: false }));
 //app.use(morgan("dev"))
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
 app.use("/", index_1.default);
-app.use("/api", topic_1.default);
+//app.use("/api", topicRouter)
+app.use("/api", file_1.default);
 app.use("/api/user", user_1.default);
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

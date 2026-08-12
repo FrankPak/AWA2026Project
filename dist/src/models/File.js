@@ -33,14 +33,16 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.File = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const UserSchema = new mongoose_1.Schema({
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    username: { type: String, required: false, unique: true },
-    isAdmin: { type: Boolean, default: false },
+//TODO ADD editing and no double editing possibility
+const fileSchema = new mongoose_1.Schema({
+    filename: { type: String, required: true },
+    content: { type: String, required: true },
+    viewLink: { type: String, required: false },
+    everyoneReadPermission: { type: Boolean, required: false, default: false },
+    createdAt: { type: Date }
 });
-const User = mongoose_1.default.model("User", UserSchema);
-exports.User = User;
-//# sourceMappingURL=User.js.map
+const File = mongoose_1.default.model('File', fileSchema);
+exports.File = File;
+//# sourceMappingURL=File.js.map

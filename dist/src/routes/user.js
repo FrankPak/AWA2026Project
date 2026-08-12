@@ -10,7 +10,9 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const User_1 = require("../models/User");
 const inputValidation_1 = require("../validators/inputValidation");
 const userRouter = (0, express_1.Router)();
-userRouter.post('/register', (0, inputValidation_1.usernameValidator)("username"), (0, inputValidation_1.emailValidator)("email"), (0, inputValidation_1.passValidator)("password"), async (req, res) => {
+userRouter.post('/register', 
+//usernameValidator("username"),
+(0, inputValidation_1.emailValidator)("email"), (0, inputValidation_1.passValidator)("password"), async (req, res) => {
     const errors = (0, express_validator_1.validationResult)(req);
     if (!errors.isEmpty()) {
         console.log(errors);
@@ -27,7 +29,7 @@ userRouter.post('/register', (0, inputValidation_1.usernameValidator)("username"
         const newUser = await User_1.User.create({
             email: req.body.email,
             password: hash,
-            username: req.body.username,
+            //username: req.body.username,
             isAdmin: req.body.isAdmin ? req.body.isAdmin : false
         });
         return res.status(200).json(newUser);
